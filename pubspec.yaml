@@ -1,0 +1,7 @@
+name: dart_firebase_admin
+
+environment:
+  sdk: ^3.0.0
+
+dev_dependencies:
+  melos: ^3.2.0
