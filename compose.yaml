@@ -1,0 +1,7 @@
+services:
+  frog:
+    build:
+      context: ./packages/
+      dockerfile: ./example_firebase_admin_frog/Dockerfile
+    ports:
+      - "28080:8080"
