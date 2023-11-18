@@ -1,5 +1,3 @@
-import 'dart:io';
-
 // import 'package:dart_firebase_admin/auth.dart';
 import 'package:dart_firebase_admin/dart_firebase_admin.dart';
 import 'package:dart_firebase_admin/firestore.dart';
@@ -22,7 +20,7 @@ Future<Response> onRequest(RequestContext context) async {
     'time': DateTime.now().toIso8601String(),
   });
 
-  // final auth = Auth(admin);
+  // final auth =Auth(admin);
 
   final snapshot = await collection.get();
 
