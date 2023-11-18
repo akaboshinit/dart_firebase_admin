@@ -18,11 +18,9 @@ RUN dart pub global run dart_frog_cli:dart_frog build
 RUN dart pub get --offline
 RUN dart compile exe build/bin/server.dart -o build/bin/server
 
-FROM scratch
-
+FROM scratch AS runtime
 COPY --from=builder /runtime/ /
 COPY --from=builder /app/build/bin/server /app/bin/
-COPY example_firebase_admin_frog/service-account.json service-account.json
 
 EXPOSE 8080
 CMD ["/app/bin/server"]

@@ -22,3 +22,5 @@ pubspec.lock
 .classpath
 .settings
 .last_build_id
+
+.log

@@ -6,23 +6,23 @@ import 'package:dart_firebase_admin/firestore.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 Future<Response> onRequest(RequestContext context) async {
-  final serviceAccountFile = File('service-account.json');
   final admin = FirebaseAdminApp.initializeApp(
     'template-dev-d032e',
-    Credential.fromServiceAccount(serviceAccountFile),
+    Credential.fromApplicationDefaultCredentials(
+      serviceAccountId:
+          'firebase-adminsdk-b9utb@template-dev-d032e.iam.gserviceaccount.com',
+    ),
   );
-
   // admin.useEmulator();
-
-  // final auth =Auth(admin);
 
   final firestore = Firestore(admin);
   final collection = firestore.collection('test');
-
   await collection.doc(DateTime.now().toString()).set({
     'age': 32,
     'time': DateTime.now().toIso8601String(),
   });
+
+  // final auth = Auth(admin);
 
   final snapshot = await collection.get();
 

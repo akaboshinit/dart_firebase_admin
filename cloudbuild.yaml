@@ -1,0 +1,15 @@
+steps:
+# Build the container image
+- name: 'docker/compose'
+  args: ['build']
+  # args: ['build', '-t', 'gcr.io/template-dev-d032e/helloworld/hello:v1', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-northeast1-docker.pkg.dev/template-dev-d032e/helloworld/hello:v1']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'helloworld1', '--image', 'asia-northeast1-docker.pkg.dev/template-dev-d032e/helloworld/hello:v1', "--platform", "managed", '--region', 'asia-northeast1', "--allow-unauthenticated"]
+images:
+- asia-northeast1-docker.pkg.dev/template-dev-d032e/helloworld/hello:v1
+
