@@ -3,8 +3,8 @@ services:
   frog:
     # platform: linux/amd64
     build:
-      context: ./packages/
-      dockerfile: ./example_firebase_admin_frog/Dockerfile
+      context: .
+      dockerfile: Dockerfile
       target: runtime
     image: asia-northeast1-docker.pkg.dev/template-dev-d032e/helloworld/hello:v1
     ports:

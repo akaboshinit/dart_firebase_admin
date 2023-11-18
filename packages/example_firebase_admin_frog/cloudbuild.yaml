@@ -2,7 +2,6 @@ steps:
 # Build the container image
 - name: 'docker/compose'
   args: ['build']
-  # args: ['build', '-t', 'gcr.io/template-dev-d032e/helloworld/hello:v1', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-northeast1-docker.pkg.dev/template-dev-d032e/helloworld/hello:v1']
